@@ -18,29 +18,29 @@
  */
 
 int maxArea(int* height, int heightSize){
-	int left = 0;
-	int right = heightSize - 1;
-	int area = 0;
-	while (left < right) {
-		if (height[left] < height[right]) {
-			int t = height[left] * (right - left);
-			if (area < t) {
-				area = t;
-			}
-			left++;
-		} else {
-			int t = height[right] * (right - left);
-			if (area < t) {
-				area = t;
-			}
-			right--;
-		}
-	}
-	return area;
+    int left = 0;
+    int right = heightSize - 1;
+    int area = 0;
+    while (left < right) {
+        if (height[left] < height[right]) {
+            int t = height[left] * (right - left);
+            if (area < t) {
+                area = t;
+            }
+            left++;
+        } else {
+            int t = height[right] * (right - left);
+            if (area < t) {
+                area = t;
+            }
+            right--;
+        }
+    }
+    return area;
 }
 
 int main(int argc, char *argv[]) {
-	int a[] = {1,8,6,2,5,4,8,3,7};
-	int ret = maxArea(a, 9);
-	printf("ret:%d\n", ret);
+    int a[] = {1,8,6,2,5,4,8,3,7};
+    int ret = maxArea(a, 9);
+    printf("ret:%d\n", ret);
 }
