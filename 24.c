@@ -18,7 +18,7 @@ struct ListNode* swapPairs(struct ListNode* head){
 
 int main(int argc, char *argv[]) {
     int a[32];
-    int n = string_to_vector(argv[1], a);
+    int n = string_to_array(argv[1], a);
     struct ListNode *ret = init(a, n);
     print_list(ret);
 

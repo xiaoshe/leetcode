@@ -29,7 +29,7 @@ int* plusOne(int* digits, int digitsSize, int* returnSize){
 
 int main(int argc, char *argv[]) {
     int a[32];
-    int n = string_to_vector(argv[1], a);
+    int n = string_to_array(argv[1], a);
     int sz = 0;
     int* ret = plusOne(a, n, &sz);
     print_array(ret, sz);

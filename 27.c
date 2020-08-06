@@ -28,7 +28,7 @@ int removeElement(int* nums, int numsSize, int val){
 
 int main(int argc, char *argv[]) {
     int a[32];
-    int n = string_to_vector(argv[1], a);
+    int n = string_to_array(argv[1], a);
 
     int ret = removeElement(a, n, atoi(argv[2]));
     printf("ret:%d\n", ret);

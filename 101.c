@@ -17,7 +17,7 @@ int isSymmetric(struct TreeNode* root){
 
 int main(int argc, char *argv[]) {
     int a[32];
-    int n = string_to_vector(argv[1], a);
+    int n = string_to_array(argv[1], a);
     print_array(a, n);
 
     struct TreeNode* root = init_tree(a, n);

@@ -4,10 +4,13 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <malloc.h>
+#include <stdio.h>
+#include <limits.h>
+#include <string.h>
 
 // 字符串转数组
 // ret数组要足够大，返回数组大小
-int string_to_vector(char *s, int ret[]) {
+int string_to_array(char *s, int ret[]) {
     int n = 0;
     while (*s != 0) {
         int number = 0;
