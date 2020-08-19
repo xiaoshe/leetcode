@@ -18,8 +18,8 @@ public:
 
 int main(int argc, char *argv[]) {
     vector<int> val;
-    string_to_vector(argv[1], &val);
-    print_vector(val);
+    StringToVector(argv[1], &val);
+    PrintVector(val);
     Solution s;
     bool ret = s.containsDuplicate(val);
     printf("ret:%d\n", ret);

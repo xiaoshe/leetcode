@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
     Solution s;
     vector<vector<int> > ret = s.levelOrder(left);
     for (size_t i = 0; i < ret.size(); i++) {
-        print_vector(ret[i]);
+        PrintVector(ret[i]);
     }
 
 }
