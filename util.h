@@ -12,7 +12,7 @@
 // ret数组要足够大，返回数组大小
 int string_to_array(char *s, int ret[]) {
     int n = 0;
-    while (*s != 0) {
+    while (*s != 0 && *s != '\n') {
         int number = 0;
         int pos = 1; // 默认：正数
         while (*s != '-' && !isdigit(*s)) s++;
