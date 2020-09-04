@@ -1,6 +1,7 @@
 #include "util.h"
 
 // 动态规划：dp[n] = dp[n-1] + dp[n-2]
+// 斐波纳锲
 int climbStairs(int n) {
     int p1 = 1, p2 = 1, cur = 1;
     for (int i = 2; i <= n; i++) {
@@ -10,6 +11,7 @@ int climbStairs(int n) {
     }
     return cur;
 }
+
 
 int main(int argc, char *argv[]) {
     int ret = climbStairs(atoi(argv[1]));
