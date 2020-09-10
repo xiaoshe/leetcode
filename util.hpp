@@ -7,6 +7,7 @@
 #include <set>
 #include <map>
 #include <list>
+#include <queue>
 using namespace std;
 
 int StringToInt(char *s) {
@@ -56,7 +57,7 @@ void PrintVector(const vector<int>& ret) {
 void PrintVector(const vector<string>& ret) {
     printf("size:%ld\n", ret.size());
     for (size_t i = 0; i < ret.size(); i++) {
-        printf("%ld|%s|\n", ret[i].size(), ret[i].c_str());
+        printf("%ld:\"%s\"\n", ret[i].size(), ret[i].c_str());
     }
     printf("\n");
 }
