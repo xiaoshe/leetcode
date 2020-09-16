@@ -1,5 +1,8 @@
 #include "util.h"
 
+int maxSubArray(int* nums, int numsSize){
+
+}
 
 int main(int argc, char *argv[]) {
     int a[32];

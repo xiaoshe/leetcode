@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <limits.h>
 #include <string.h>
+#include <math.h>
 
 // 字符串转数组
 // ret数组要足够大，返回数组大小
