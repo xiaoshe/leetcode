@@ -37,40 +37,50 @@ struct ListNode* merge(struct ListNode *left, struct ListNode *right) {
     return ret;
 }
 
-// 方法1：分治，（1）递归，（2）两两合并
-struct ListNode* mergeKLists(struct ListNode** lists, int listsSize){
-    if (listsSize == 0) return NULL;
-    while (listsSize > 1) {
-        int half = listsSize / 2;
-        for (int i = 0; i < half; i++) {
-            lists[i] = merge(lists[i], lists[listsSize - i - 1]);
-        }
-        if (listsSize % 2 == 0) {
-            listsSize = half;
-        } else {
-            listsSize = half + 1;
-        }
+struct ListNode* go(struct ListNode* head, int size) {
+    if (size == 0) return NULL;
+    if (size == 1) return head;
+    int mid = size / 2;
+    struct ListNode *p = head;
+    for (int i = 0; i < mid - 1; i++) {
+        p = p->next;
     }
-    return lists[0];
+    struct ListNode* midnode = p->next;
+    p->next = NULL; // 断开链接，否则merge时报错
+    struct ListNode* left = go(head, mid);
+    struct ListNode* right = go(midnode, size - mid);
+    return merge(left, right);
+}
+
+struct ListNode* sortList(struct ListNode* head){
+    struct ListNode *p = head;
+    int size = 0;
+    while (p) {
+        size++;
+        p = p->next;
+    }
+    return go(head, size);
 }
 
 int main(int argc, char *argv[]) {
-    struct ListNode *lists[32];
-    int sz = 0;
-    FILE *rp = fopen("data/23.txt", "r");
-    char str[128];
-    while (fgets(str, 128, rp)) {
+    char *file = "data/148.txt";
+    FILE *rp = fopen(file, "r");
+    char s[128];
+    while (fgets(s, 128, rp)) {
+        if (s[0] == '#') continue;
         int a[32];
-        int n = string_to_array(str, a);
+        int n = string_to_array(s, a);
+        print_array(a, n);
+
+        // TODO
         struct ListNode *l = init_list(a, n);
-        lists[sz++] = l;
-        printf("%s\n", str);
         print_list(l);
+        l = sortList(l);
+        print_list(l);
+        
+
+        
     }
     fclose(rp);
-
-    struct ListNode *ret = mergeKLists(lists, sz);
-    print_list(ret);
-
     return 0;
 }

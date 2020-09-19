@@ -15,7 +15,7 @@ struct ListNode* middleNode(struct ListNode* head){
 int main(int argc, char *argv[]) {
     int a[32];
     int n = string_to_array(argv[1], a);
-    struct ListNode *h = init(a, n);
+    struct ListNode *h = init_list(a, n);
     print_list(h);
 
     struct ListNode *ret = middleNode(h);

@@ -58,13 +58,20 @@ struct ListNode *make(int v) {
 }
 
 // 根据数组创建一条单链表
-struct ListNode *init(int a[], int n) {
+struct ListNode *init_list(int a[], int n) {
     struct ListNode *ret = NULL;
     for (int i = n - 1; i >= 0; i--) {
         struct ListNode *t = make(a[i]);
         t->next = ret;
         ret = t;
     }
+    return ret;
+}
+
+struct ListNode *tail_list(struct ListNode* head) {
+    if (head == NULL) return NULL;
+    struct ListNode* ret = head;
+    while (ret->next != NULL) ret = ret->next;
     return ret;
 }
 

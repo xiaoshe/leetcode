@@ -29,7 +29,7 @@ public:
 };
 
 int main() {
-    FILE *rp = fopen("48.txt", "r");
+    FILE *rp = fopen("data/48.txt", "r");
     int n = 0;
     fscanf(rp, "%d", &n);
     vector< vector<int> > matrix;
