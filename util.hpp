@@ -8,6 +8,7 @@
 #include <map>
 #include <list>
 #include <queue>
+#include <algorithm>
 using namespace std;
 
 int StringToInt(char *s) {
@@ -49,6 +50,13 @@ void StringToVector(char *s, vector<int> *ret) {
 }
 
 void PrintVector(const vector<int>& ret) {
+    for (size_t i = 0; i < ret.size(); i++) {
+        printf("%d ", ret[i]);
+    }
+    printf("\n");
+}
+
+void print(const vector<int>& ret) {
     for (size_t i = 0; i < ret.size(); i++) {
         printf("%d ", ret[i]);
     }
