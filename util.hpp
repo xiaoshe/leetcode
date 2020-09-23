@@ -62,6 +62,11 @@ void print(const vector<int>& ret) {
     }
     printf("\n");
 }
+void print(const vector< vector<int> >& ret) {
+    for (size_t i = 0; i < ret.size(); i++) {
+        print(ret[i]);
+    }
+}
 void PrintVector(const vector<string>& ret) {
     printf("size:%ld\n", ret.size());
     for (size_t i = 0; i < ret.size(); i++) {
