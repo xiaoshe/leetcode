@@ -141,6 +141,7 @@ struct TreeNode *init_tree(int a[], int sz) {
     return ret[0];
 }
 
+// 1,2,3,null,4,5
 struct TreeNode *init_tree2(char *s) {
     struct TreeNode *ret[SIZE] = {NULL};
     int sz = 0;
@@ -154,6 +155,7 @@ struct TreeNode *init_tree2(char *s) {
             struct TreeNode *t = make_tree_node(val);
             ret[sz++] = t;
         } else if (*s == 'n') {
+            // null
             s += 4;
             sz++;
         }

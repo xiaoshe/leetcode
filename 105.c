@@ -21,30 +21,13 @@ struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int in
 }
 
 int main(int argc, char *argv[]) {
-    char *file = "data/105.txt";
-    FILE *rp = fopen(file, "r");
-    char s[128];
-    while (fgets(s, 128, rp)) {
-        if (s[0] == '#') continue;
-        char *p = s;
-        while (*p != ' ') p++;
-        *p = 0;
-
-        int left[32];
-        int leftsz = string_to_array(s, left);
-        print_array(left, leftsz);
-
-        int right[32];
-        int rightsz = string_to_array(p+1, right);
-        print_array(right, rightsz);
-
-
-        // TODO
+    int left[32] = {3,9,20,15,7};
+    int leftsz = 5;
+    int right[32] = {9,3,15,20,7};
+    int rightsz = 5;
         
-        struct TreeNode* root = buildTree(left, leftsz, right, rightsz);
-        print_tree_middle(root);
+    struct TreeNode* root = buildTree(left, leftsz, right, rightsz);
+    print_tree(root);
         
-    }
-    fclose(rp);
     return 0;
 }

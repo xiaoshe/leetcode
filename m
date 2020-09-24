@@ -6,5 +6,5 @@ ret=`echo $f|grep cc`
 if [ "$ret" = "$f" ] ; then
     g++ -g -o a $f
 else
-    gcc -g -o a $f
+    gcc -g -o a $f -std=c99
 fi

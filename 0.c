@@ -2,19 +2,27 @@
 
 
 int main(int argc, char *argv[]) {
-    char *file = "data/0.txt";
-    FILE *rp = fopen(file, "r");
-    char s[128];
-    while (fgets(s, 128, rp)) {
-        if (s[0] == '#') continue;
-        int a[32];
-        int n = string_to_array(s, a);
-        print_array(a, n);
+    // 树
+    char *s = "5,2,13";
+    s = "5,2,13,1,3,6,15";
+    struct TreeNode *root = init_tree2(s);
+    print_tree(root);
 
-        // TODO
-        
-        
-    }
-    fclose(rp);
+    /*
+    // 单链表
+     */
+    /*
+    // 二维数组
+	int a[][32] = {
+        {1,2,3},
+        {4,5,6},
+        {7,8,9}
+	};
+    int m = 3, n = 3;
+    int sizes[32] = {};
+    sizes[0] = n;
+    int **b = array(a, m, n);
+    */
+
     return 0;
 }
