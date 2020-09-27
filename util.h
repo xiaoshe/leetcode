@@ -171,54 +171,6 @@ struct TreeNode *init_tree2(char *s) {
     return ret[0];
 }
 
-void print_tree_middle(struct TreeNode *tree) {
-    /*
-    */
-    // 树状打印
-    struct TreeNode *s1[SIZE] = {NULL};
-    int l1 = 0;
-    struct TreeNode *s2[SIZE] = {NULL};
-    int l2 = 0;
-    if (tree != NULL) {
-        s1[l1++] = tree;
-    }
-    while (1) {
-        int empty = 1;
-        for (int i = 0; i < l1; i++) {
-            if (s1[i] != NULL) {
-                empty = 0;
-                break;
-            }
-        }
-        // 全空
-        if (empty == 1) {
-            printf("tree ok\n");
-            break;
-        }
-
-        l2 = 0;
-        for (int i = 0; i < l1; i++) {
-            if (s1[i] == NULL) {
-                printf("- ");
-                // 左右孩子
-                s2[l2++] = NULL;
-                s2[l2++] = NULL;
-            } else {
-                printf("%d ", s1[i]->val);
-                // 左右孩子
-                s2[l2++] = s1[i]->left;
-                s2[l2++] = s1[i]->right;
-            }
-        }
-        printf("\n");
-
-        for (int i = 0; i < l2; i++) {
-            s1[i] = s2[i];
-        }
-        l1 = l2;
-    }
-}
-
 void print_tree(struct TreeNode *tree) {
     // 树状打印，最多6行，每个数字占4个字节
     // 先计算x行

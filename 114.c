@@ -26,9 +26,9 @@ int main(int argc, char *argv[]) {
     int n = string_to_array(argv[1], a);
 
     struct TreeNode* left = init_tree(a, n);
-    print_tree_middle(left);
+    print_tree(left);
     flatten(left);
-    print_tree_middle(left);
+    print_tree(left);
 
     return 0;
 }

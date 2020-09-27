@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 
         // TODO
         struct TreeNode *root = sortedArrayToBST(a, n);
-        print_tree_middle(root);
+        print_tree(root);
         
     }
     fclose(rp);

@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
     print_array(a, n);
 
     struct TreeNode* root = init_tree(a, n);
-    print_tree_middle(root);
+    print_tree(root);
 
     int ret = isSymmetric(root);
     printf("%d\n", ret);
