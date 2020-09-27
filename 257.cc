@@ -47,6 +47,6 @@ int main(int argc, char *argv[]) {
 
     Solution s;
     vector<string> ret = s.binaryTreePaths(left);
-    PrintVector(ret);
+    print(ret);
     return 0;
 }

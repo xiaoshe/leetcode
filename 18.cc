@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
     vector<vector<int> > ret = s.fourSum(num, StringToInt(argv[2]));
     printf("result size:%ld\n", ret.size());
     for (size_t i = 0; i < ret.size(); ++i) {
-        PrintVector(ret[i]);
+        print(ret[i]);
     }
     return 0;
 }

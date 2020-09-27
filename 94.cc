@@ -67,6 +67,6 @@ int main(int argc, char *argv[]) {
 
     Solution s;
     vector<int> ret = s.inorderTraversal(left);
-    PrintVector(ret);
+    print(ret);
     return 0;
 }

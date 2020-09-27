@@ -78,6 +78,6 @@ int main(int argc, char *argv[]) {
     StringToVector(argv[1], &t);
     Solution s;
     vector<int> ret = s.topKFrequent(t, atoi(argv[2]));
-    PrintVector(ret);
+    print(ret);
     return 0;
 }

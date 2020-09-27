@@ -47,7 +47,7 @@ int main() {
     Solution s;
     vector<vector<string> > ret = s.groupAnagrams(strs);
     for (size_t i = 0; i < ret.size(); i++) {
-        PrintVector(ret[i]);
+        print(ret[i]);
     }
 
     return 0;

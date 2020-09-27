@@ -83,6 +83,6 @@ int main(int argc, char *argv[]) {
     }
     Solution s;
     vector<string> ret = s.fullJustify(words, 16);
-    PrintVector(ret);
+    print(ret);
     return 0;
 }

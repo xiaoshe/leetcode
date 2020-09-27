@@ -25,8 +25,22 @@ int StringToInt(char *s) {
     return pos == 1 ? number : 0 - number;
 }
 
+// 切分字符串，返回字符数组
+void SplitString(const string& str, char sep, vector<string> *ret) {
+  size_t last = 0;
+  size_t i;
+  size_t c = str.size();
+  for (i = 0; i <= c; ++i) {
+    if (i == c || str[i] == sep) {
+      size_t len = i - last;
+      string tmp = str.substr(last, len);
+      ret->push_back(tmp);
+      last = i + 1;
+    }
+  }
+}
+
 // 字符串转整数数组
-// ret数组要足够大，返回数组大小
 // "1,-2,0,3,4" => [1,-2,0,3,4]
 void StringToVector(char *s, vector<int> *ret) {
     while (*s != 0) {
@@ -67,7 +81,7 @@ void print(const vector< vector<int> >& ret) {
         print(ret[i]);
     }
 }
-void PrintVector(const vector<string>& ret) {
+void print(const vector<string>& ret) {
     printf("size:%ld\n", ret.size());
     for (size_t i = 0; i < ret.size(); i++) {
         printf("%ld:\"%s\"\n", ret[i].size(), ret[i].c_str());
@@ -75,18 +89,4 @@ void PrintVector(const vector<string>& ret) {
     printf("\n");
 }
 
-// 切分字符串，返回字符数组
-void SplitString(const string& str, char sep, vector<string> *ret) {
-  size_t last = 0;
-  size_t i;
-  size_t c = str.size();
-  for (i = 0; i <= c; ++i) {
-    if (i == c || str[i] == sep) {
-      size_t len = i - last;
-      string tmp = str.substr(last, len);
-      ret->push_back(tmp);
-      last = i + 1;
-    }
-  }
-}
 #endif

@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
     Solution s;
     vector<vector<int> > ret = s.threeSum(num);
     for (size_t i = 0; i < ret.size(); ++i) {
-        PrintVector(ret[i]);
+        print(ret[i]);
     }
     return 0;
 }

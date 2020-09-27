@@ -19,7 +19,7 @@ public:
 int main(int argc, char *argv[]) {
     vector<int> val;
     StringToVector(argv[1], &val);
-    PrintVector(val);
+    print(val);
     Solution s;
     bool ret = s.containsDuplicate(val);
     printf("ret:%d\n", ret);

@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
     Solution s;
     vector<vector<int> > ret = s.zigzagLevelOrder(left);
     for (size_t i = 0; i < ret.size(); i++) {
-        PrintVector(ret[i]);
+        print(ret[i]);
     }
 
 }
