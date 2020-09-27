@@ -16,11 +16,9 @@ int isSymmetric(struct TreeNode* root){
 
 
 int main(int argc, char *argv[]) {
-    int a[32];
-    int n = string_to_array(argv[1], a);
-    print_array(a, n);
-
-    struct TreeNode* root = init_tree(a, n);
+    char *s = "1,2,2,3,4,4,3";
+    s = "1,2,2,null,3,null,3";
+    struct TreeNode* root = init_tree(s);
     print_tree(root);
 
     int ret = isSymmetric(root);

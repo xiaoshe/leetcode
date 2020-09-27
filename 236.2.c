@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     struct TreeNode q;
     q.val = 4;
 
-    struct TreeNode* root = init_tree2(s);
+    struct TreeNode* root = init_tree(s);
     print_tree(root);
     struct TreeNode* ret = lowestCommonAncestor(root, &p, &q);
     printf("ret:%d\n", ret->val);

@@ -17,7 +17,7 @@ struct TreeNode* convertBST(struct TreeNode* root){
 int main(int argc, char *argv[]) {
     char *s = "5,2,13";
     s = "5,2,13,1,3,6,15";
-    struct TreeNode *root = init_tree2(s);
+    struct TreeNode *root = init_tree(s);
     print_tree(root);
     struct TreeNode *ret = convertBST(root);
     print_tree(ret);

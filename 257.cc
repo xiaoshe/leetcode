@@ -40,10 +40,8 @@ public:
 };
 
 int main(int argc, char *argv[]) {
-    int a[32];
-    int n = string_to_array(argv[1], a);
-    struct TreeNode* left = init_tree(a, n);
-    print_tree_middle(left);
+    struct TreeNode* left = init_tree(argv[1]);
+    print_tree(left);
 
     Solution s;
     vector<string> ret = s.binaryTreePaths(left);

@@ -117,32 +117,8 @@ struct TreeNode *make_tree_node(int v) {
     return p;
 }
 
-// 根据数组创建满二叉树，元组0表示NULL
-struct TreeNode *init_tree(int a[], int sz) {
-    struct TreeNode *ret[SIZE];
-    for (int i = 0; i < sz; i++) {
-        struct TreeNode *t = NULL;
-        if (a[i] != 0) {
-            t = make_tree_node(a[i]);
-        }
-        ret[i] = t;
-    }
-    for (int i = 0; i < sz; i++) {
-        struct TreeNode *t = ret[i];
-        int left = i * 2 + 1;
-        if (left < sz && ret[left] != NULL) {
-            t->left = ret[left];
-        }
-        int right = i * 2 + 2;
-        if (right < sz && ret[right] != NULL) {
-            t->right = ret[right];
-        }
-    }
-    return ret[0];
-}
-
 // 1,2,3,null,4,5
-struct TreeNode *init_tree2(char *s) {
+struct TreeNode *init_tree(char *s) {
     struct TreeNode *ret[SIZE] = {NULL};
     int sz = 0;
     while (*s != 0) {

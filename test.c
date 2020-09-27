@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     }
     printf("\n");
     */
-    struct TreeNode *root = init_tree2(argv[1]);
+    struct TreeNode *root = init_tree(argv[1]);
     print_tree(root);
     return 0;
 }

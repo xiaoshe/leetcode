@@ -19,7 +19,7 @@ int isValidBST(struct TreeNode* root){
 int main(int argc, char *argv[]) {
     char *s = "5,1,4,null,null,3,6";
     s = "0";
-    struct TreeNode* left = init_tree2(s);
+    struct TreeNode* left = init_tree(s);
     print_tree(left);
 
     int ret = isValidBST(left);

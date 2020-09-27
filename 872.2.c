@@ -49,16 +49,11 @@ int leafSimilar(struct TreeNode* root1, struct TreeNode* root2){
 }
 
 int main(int argc, char *argv[]) {
-    char *s1 = "3,5,1,6,2,8,9,-,-,7,4";
-    char *s2 = "30,50,10,6,2,8,9,-,-,7,4";
+    char *s1 = "3,5,1,6,2,8,9,null,null,7,4";
+    char *s2 = "30,50,10,6,2,8,9,null,null,7,4";
 
-    int a1[32];
-    int n1 = string_to_array(s1, a1);
-    struct TreeNode* root1 = init_tree(a1, n1);
-
-    int a2[32];
-    int n2 = string_to_array(s2, a2);
-    struct TreeNode* root2 = init_tree(a2, n2);
+    struct TreeNode* root1 = init_tree(s1);
+    struct TreeNode* root2 = init_tree(s2);
 
     int ret = leafSimilar(root1, root2);
     printf("ret:%d\n", ret);

@@ -19,9 +19,7 @@ int hasPathSum(struct TreeNode* root, int sum){
 }
 
 int main(int argc, char *argv[]) {
-    int a[32];
-    int n = string_to_array(argv[1], a);
-    struct TreeNode* left = init_tree(a, n);
+    struct TreeNode* left = init_tree(argv[1]);
     print_tree(left);
 
     int ret = hasPathSum(left, atoi(argv[2]));

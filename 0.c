@@ -5,7 +5,7 @@ int main(int argc, char *argv[]) {
     // 树
     char *s = "5,2,13";
     s = "5,2,13,1,3,6,15";
-    struct TreeNode *root = init_tree2(s);
+    struct TreeNode *root = init_tree(s);
     print_tree(root);
 
     /*

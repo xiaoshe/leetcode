@@ -11,13 +11,18 @@ int isSameTree(struct TreeNode* p, struct TreeNode* q){
 }
 
 int main(int argc, char *argv[]) {
-    int a[32];
-    int n = string_to_array(argv[1], a);
-    struct TreeNode* left = init_tree(a, n);
-    print_tree(left);
+    char *l = "1,2,3";
+    char *r = "1,2,3";
 
-    n = string_to_array(argv[2], a);
-    struct TreeNode* right = init_tree(a, n);
+    l = "1,2";
+    r = "1,null,2";
+
+    l = "1,2,1";
+    r = "1,1,2";
+
+    struct TreeNode* left = init_tree(l);
+    print_tree(left);
+    struct TreeNode* right = init_tree(r);
     print_tree(right);
 
     int ret = isSameTree(left, right);

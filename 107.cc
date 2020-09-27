@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     right->left = make_tree_node(15);
     right->right = make_tree_node(7);
 
-    print_tree_middle(root);
+    print_tree(root);
     printf("\n");
 
 

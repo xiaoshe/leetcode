@@ -13,9 +13,9 @@ struct TreeNode* mergeTrees(struct TreeNode* t1, struct TreeNode* t2){
 
 int main(int argc, char *argv[]) {
     char *s1 = "1,3,2,5";
-    struct TreeNode* t1 = init_tree2(s1);
+    struct TreeNode* t1 = init_tree(s1);
     char *s2 = "2,1,3,null,4,null,7";
-    struct TreeNode* t2 = init_tree2(s2);
+    struct TreeNode* t2 = init_tree(s2);
     print_tree(t1);
     print_tree(t2);
 
