@@ -15,11 +15,8 @@ struct ListNode *detectCycle(struct ListNode *head) {
 }
 
 int main(int argc, char *argv[]) {
-    int a[32];
     char *s = "3,2,0,-4";
-    int n = string_to_array(s, a);
-    print_array(a, n);
-    struct ListNode *list = init_list(a, n);
+    struct ListNode *list = init_list(s);
     print_list(list);
     struct ListNode *tail = tail_list(list);
     tail->next = list->next;

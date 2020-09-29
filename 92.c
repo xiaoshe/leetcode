@@ -41,9 +41,7 @@ struct ListNode* reverseBetween(struct ListNode* head, int m, int n){
 }
 
 int main(int argc, char *argv[]) {
-    int a[32];
-    int n = string_to_array(argv[1], a);
-    struct ListNode *ret = init_list(a, n);
+    struct ListNode *ret = init_list(argv[1]);
     print_list(ret);
 
     struct ListNode *r = reverseBetween(ret, atoi(argv[2]), atoi(argv[3]));

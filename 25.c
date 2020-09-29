@@ -6,7 +6,7 @@ struct Pair {
 };
 
 // 将head分割成2个链表head和out（记录head,tail）
-struct ListNode *split(struct ListNode *head, int k, struct Pair *out) {
+struct ListNode *split_list(struct ListNode *head, int k, struct Pair *out) {
     struct ListNode *p = head;
     while (k > 0) {
         k--;
@@ -44,7 +44,7 @@ struct ListNode* reverseKGroup(struct ListNode* head, int k) {
     while (len >= k) {
         // 当剩余长度大于k时，切分链表
         struct Pair tmp = {NULL, NULL};
-        head = split(head, k, &tmp);
+        head = split_list(head, k, &tmp);
         // 合并反转的部分
         ret = merge(ret, tmp);
         len -= k;
@@ -57,9 +57,7 @@ struct ListNode* reverseKGroup(struct ListNode* head, int k) {
 
 
 int main(int argc, char *argv[]) {
-    int a[32];
-    int n = string_to_array(argv[1], a);
-    struct ListNode *ret = init_list(a, n);
+    struct ListNode *ret = init_list(argv[1]);
     print_list(ret);
 
     struct ListNode *r = reverseKGroup(ret, atoi(argv[2]));

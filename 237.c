@@ -10,9 +10,7 @@ void deleteNode(struct ListNode* node) {
 }
 
 int main(int argc, char *argv[]) {
-    int a[32];
-    int n = string_to_array(argv[1], a);
-    struct ListNode *h = init_list(a, n);
+    struct ListNode *h = init_list(argv[1]);
     print_list(h);
 
     deleteNode(h->next);

@@ -60,9 +60,7 @@ int main(int argc, char *argv[]) {
     FILE *rp = fopen("data/23.txt", "r");
     char str[128];
     while (fgets(str, 128, rp)) {
-        int a[32];
-        int n = string_to_array(str, a);
-        struct ListNode *l = init_list(a, n);
+        struct ListNode *l = init_list(str);
         lists[sz++] = l;
         printf("%s\n", str);
         print_list(l);

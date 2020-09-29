@@ -68,12 +68,9 @@ int main(int argc, char *argv[]) {
     char s[128];
     while (fgets(s, 128, rp)) {
         if (s[0] == '#') continue;
-        int a[32];
-        int n = string_to_array(s, a);
-        print_array(a, n);
 
         // TODO
-        struct ListNode *l = init_list(a, n);
+        struct ListNode *l = init_list(s);
         print_list(l);
         l = sortList(l);
         print_list(l);

@@ -9,29 +9,77 @@
 #include <string.h>
 #include <math.h>
 
+// 字符转整数atoi()，例如" \n -123 " => 123, "abc" => 0
+#define SIZE 64
+
+// 重新申请空间
+char *trim(char *s) {
+    while (isspace(*s)) s++;
+    int l = strlen(s);
+    char *ret = (char *)malloc(l+1);
+    strcpy(ret, s);
+    ret[l] = 0;
+    while (--l >= 0) {
+        if (isspace(ret[l])) {
+            ret[l] = 0;
+        } else {
+            break;
+        }
+    }
+    return ret;
+}
+
+// 切分字符串，返回字符串数组，大小为sz
+// NOTE:sz最大为SIZE，每个字符串最长为SIZE
+char **split(char *s, char seq, int *sz) {
+    char **ret = (char **)malloc(sizeof(char*) * SIZE);
+    int n = 0;
+    while (1) {
+        char *r = (char *)malloc(SIZE);
+        char *p = strchr(s, seq);
+        if (p == NULL) {
+            strcpy(r, s);
+            ret[n++] = r;
+            break;
+        } else {
+            strncpy(r, s, p - s);
+            ret[n++] = r;
+            s = p + 1;
+        }
+    }
+    *sz = n;
+    return ret;
+}
+
+char **extract(char *str, char *begin, char *end, int *sz) {
+    char **ret = (char **)malloc(sizeof(char*) * SIZE);
+    int blen = strlen(begin);
+    int elen = strlen(end);
+    int n = 0;
+    char *s = str;
+    while (1) {
+        char *b = strstr(s, begin);
+        if (b == NULL) break;
+        char *e = strstr(s + blen, end);
+        if (e == NULL) break;
+        char *r = (char *)malloc(SIZE);
+        strncpy(r, b+1, e - b - 1);
+        ret[n++] = r;
+        s = e + elen;
+    }
+    *sz = n;
+    return ret;
+}
+
 // 字符串转数组
 // ret数组要足够大，返回数组大小
 int string_to_array(char *s, int ret[]) {
-    int n = 0;
-    while (*s != 0 && *s != '\n') {
-        int number = 0;
-        int pos = 1; // 默认：正数
-        while (*s != '-' && !isdigit(*s)) s++;
-        if (*s == '-') {
-            pos = 0;
-            s++;
-        }
-        while (isdigit(*s)) {
-            number = number * 10 + *s - '0';
-            s++;
-        }
-        if (pos == 1) {
-            ret[n++] = number;
-        } else {
-            ret[n++] = 0 - number;
-        }
+    int sz;
+    char **t = split(s, ',', &sz);
+    for (int i = 0; i < sz; i++) {
+        ret[i] = atoi(t[i]);
     }
-    return n;
+    return sz;
 }
 
 // 打印数组
@@ -41,6 +89,13 @@ void print_array(int a[], int n) {
         printf("%d ", a[i]);
     }
     printf("\n");
+}
+
+void print_string(char **a, int n) {
+    printf("char**[%d]:\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("  %s\n", a[i]);
+    }
 }
 
 int **array(int a[][32], int m, int n) {
@@ -54,6 +109,32 @@ int **array(int a[][32], int m, int n) {
     }
     return ret;
 }
+
+// 每个[]对应一个数组，例如：
+// s:
+//    [1, 2, 3, 4],
+//    [5, 6, 7, 8],
+//    [9,10,11,12]
+// sz: 返回二维数组大小
+// sizes：返回每个数组的大小
+int **string_array(char *s, int *sz, int **sizes) {
+    int **ret = (int**)malloc(sizeof(int*) * SIZE);
+    int *sizess = (int *)malloc(sizeof(int) * SIZE);
+    int n;
+    char **t = extract(s, "[", "]", &n);
+    for (int i = 0; i < n; i++) {
+        int a[SIZE];
+        int al = string_to_array(t[i], a);
+        int *r = (int *)malloc(sizeof(int) * SIZE);
+        for (int j = 0; j < al; j++) r[j] = a[j];
+        ret[i] = r;
+        sizess[i] = al;
+    }
+    *sz = n;
+    *sizes = sizess;
+    return ret;
+}
+
 
 // 单链表
 struct ListNode {
@@ -69,6 +150,19 @@ struct ListNode *make(int v) {
     return p;
 }
 
+struct ListNode *init_list(char *s) {
+    int sz;
+    char **t = split(s, ',', &sz);
+    struct ListNode *ret = NULL;
+    for (int i = sz - 1; i >= 0; i--) {
+        int v = atoi(t[i]);
+        struct ListNode *t = make(v);
+        t->next = ret;
+        ret = t;
+    }
+    return ret;
+}
+/*
 // 根据数组创建一条单链表
 struct ListNode *init_list(int a[], int n) {
     struct ListNode *ret = NULL;
@@ -79,6 +173,8 @@ struct ListNode *init_list(int a[], int n) {
     }
     return ret;
 }
+*/
+
 
 struct ListNode *tail_list(struct ListNode* head) {
     if (head == NULL) return NULL;
@@ -96,12 +192,6 @@ void print_list(struct ListNode* l) {
     printf(" ^\n");
 }
 
-// 栈
-#define SIZE 64
-struct Stack {
-    int val[SIZE];
-    int top;
-};
 
 // 二叉树节点
 struct TreeNode {
@@ -117,6 +207,7 @@ struct TreeNode *make_tree_node(int v) {
     return p;
 }
 
+/*
 // 1,2,3,null,4,5
 struct TreeNode *init_tree(char *s) {
     struct TreeNode *ret[SIZE] = {NULL};
@@ -146,6 +237,43 @@ struct TreeNode *init_tree(char *s) {
     }
     return ret[0];
 }
+*/
+
+// 1,2,3,null,4,5
+// 1,null,2,2
+struct TreeNode *init_tree(char *s) {
+    struct TreeNode *ret[SIZE] = {NULL};
+    int top = 0, lr = 0;
+    int sz = 0;
+    int n = 0;
+    char **t = split(s, ',', &n);
+    if (n == 0) return NULL;
+    // 根节点
+    ret[sz++] = make_tree_node(atoi(t[0]));
+
+    for (int i = 1; i < n; i++) {
+        char *p = trim(t[i]);
+        struct TreeNode *cur = NULL;
+        if (*p != 'n') {
+            cur = make_tree_node(atoi(p));
+        }
+        // 将当前节点挂到前面第一个节点上，左或右
+        struct TreeNode* pre = ret[top];
+        if (lr == 0) {
+            pre->left = cur;
+            lr = 1;
+        } else {
+            // 右节点挂上后，取下一个节点top+1
+            pre->right = cur;
+            lr = 0;
+            top++;
+        }
+        // 当前节点加到ret中
+        if (cur != NULL) ret[sz++] = cur;
+    }
+    return ret[0];
+}
+
 
 void print_tree(struct TreeNode *tree) {
     // 树状打印，最多6行，每个数字占4个字节
