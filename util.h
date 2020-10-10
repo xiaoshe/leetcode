@@ -84,7 +84,7 @@ int string_to_array(char *s, int ret[]) {
 
 // 打印数组
 void print_array(int a[], int n) {
-    printf("Array[%d]:", n);
+    printf("array[%d]:", n);
     for (int i = 0; i < n; i++) {
         printf("%d ", a[i]);
     }
@@ -110,16 +110,21 @@ int **array(int a[][32], int m, int n) {
     return ret;
 }
 
+// 二维数组
+typedef struct array2d {
+    int **data;
+    int n;
+    int *sizes;
+}array2d;
+
 // 每个[]对应一个数组，例如：
 // s:
 //    [1, 2, 3, 4],
 //    [5, 6, 7, 8],
 //    [9,10,11,12]
-// sz: 返回二维数组大小
-// sizes：返回每个数组的大小
-int **string_array(char *s, int *sz, int **sizes) {
-    int **ret = (int**)malloc(sizeof(int*) * SIZE);
-    int *sizess = (int *)malloc(sizeof(int) * SIZE);
+array2d init_array2d(char *s) {
+    int **data = (int**)malloc(sizeof(int*) * SIZE);
+    int *sizes = (int *)malloc(sizeof(int) * SIZE);
     int n;
     char **t = extract(s, "[", "]", &n);
     for (int i = 0; i < n; i++) {
@@ -127,12 +132,25 @@ int **string_array(char *s, int *sz, int **sizes) {
         int al = string_to_array(t[i], a);
         int *r = (int *)malloc(sizeof(int) * SIZE);
         for (int j = 0; j < al; j++) r[j] = a[j];
-        ret[i] = r;
-        sizess[i] = al;
+        data[i] = r;
+        sizes[i] = al;
     }
-    *sz = n;
-    *sizes = sizess;
+    array2d ret;
+    ret.data = data;
+    ret.n = n;
+    ret.sizes = sizes;
     return ret;
+}
+
+void print_array2d(array2d arr) {
+    printf("size:%d\n", arr.n);
+    for (int i = 0; i < arr.n; i++) {
+        printf("  [");
+        for (int j = 0; j < arr.sizes[i]; j++) {
+            printf("%5d", arr.data[i][j]);
+        }
+        printf("]\n");
+    }
 }
 
 
@@ -162,18 +180,6 @@ struct ListNode *init_list(char *s) {
     }
     return ret;
 }
-/*
-// 根据数组创建一条单链表
-struct ListNode *init_list(int a[], int n) {
-    struct ListNode *ret = NULL;
-    for (int i = n - 1; i >= 0; i--) {
-        struct ListNode *t = make(a[i]);
-        t->next = ret;
-        ret = t;
-    }
-    return ret;
-}
-*/
 
 
 struct ListNode *tail_list(struct ListNode* head) {
@@ -191,6 +197,11 @@ void print_list(struct ListNode* l) {
     }
     printf(" ^\n");
 }
+
+typedef struct list {
+    struct ListNode *head;
+    struct ListNode *tail;
+}List;
 
 
 // 二叉树节点

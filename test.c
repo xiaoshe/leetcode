@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
 
     s = "[1, 2, 3, 4], [5, 6, 3,4,7, 8], [9,10,11,12]";
     int *sizes = NULL;
-    int **r3 = string_array(s, &sz, &sizes);
+    int **r3 = array2(s, &sz, &sizes);
     for (int i = 0; i < sz; i++) {
         print_array(r3[i], sizes[i]);
     }

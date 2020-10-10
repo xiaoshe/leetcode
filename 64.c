@@ -21,23 +21,11 @@ int minPathSum(int** data, int gridSize, int* gridColSize){
 }
 
 int main(int argc, char *argv[]) {
-    int a[][32] = {
-        {1,3,1},
-        {1,5,1},
-        {4,2,1}
-    };
-    int m = 3, n = 3;
+    char *s = "[1,3,1],[1,5,1],[4,2,1]";
+    array2d arr = init_array2d(s);
+    print_array2d(arr);
 
-    /*
-    int a[][32] = {
-        {0},
-        {0}
-    };
-    int m = 2, n = 1;
-    */
-    int **grid = array(a, m, n);
-    int size[1] = {n};
-    int ret = minPathSum(grid, m, size);
+    int ret = minPathSum(arr.data, arr.n, arr.sizes);
     printf("ret:%d\n", ret);
     return 0;
 }

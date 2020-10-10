@@ -2,6 +2,12 @@
 
 
 int main(int argc, char *argv[]) {
+    // 数组
+    char *s = "";
+    int a[32];
+    int n = string_to_array(s, a);
+    print_array(a, n);
+
     // 树
     char *s = "5,2,13";
     s = "5,2,13,1,3,6,15";
@@ -13,15 +19,8 @@ int main(int argc, char *argv[]) {
      */
     /*
     // 二维数组
-	int a[][32] = {
-        {1,2,3},
-        {4,5,6},
-        {7,8,9}
-	};
-    int m = 3, n = 3;
-    int sizes[32] = {};
-    sizes[0] = n;
-    int **b = array(a, m, n);
+    char *s = "[1,   3,  5,  7], [10, 11, 16, 20], [23, 30, 34, 50]";
+    array2d arr = init_array2d(s);
     */
 
     return 0;

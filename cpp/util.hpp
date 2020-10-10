@@ -12,6 +12,7 @@
 using namespace std;
 
 int StringToInt(char *s) {
+    while (isspace(*s)) s++;
     int pos = 1;
     if (*s == '-') {
         pos = 0;
@@ -61,13 +62,6 @@ void StringToVector(char *s, vector<int> *ret) {
             ret->push_back(0 - number);
         }
     }
-}
-
-void PrintVector(const vector<int>& ret) {
-    for (size_t i = 0; i < ret.size(); i++) {
-        printf("%d ", ret[i]);
-    }
-    printf("\n");
 }
 
 void print(const vector<int>& ret) {

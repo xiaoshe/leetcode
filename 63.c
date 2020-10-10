@@ -32,23 +32,11 @@ int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obst
 }
 
 int main(int argc, char *argv[]) {
-    /*
-    int a[][32] = {
-        {0,0,0},
-        {0,1,0},
-        {0,0,0}
-    };
-    int m = 3, n = 3;
-    */
+    char *s = "[0,0,0],[0,1,0],[0,0,0]";
+    array2d arr = init_array2d(s);
+    print_array2d(arr);
 
-    int a[][32] = {
-        {0},
-        {0}
-    };
-    int m = 2, n = 1;
-    int **grid = array(a, m, n);
-    int size[1] = {n};
-    int ret = uniquePathsWithObstacles(grid, m, size);
+    int ret = uniquePathsWithObstacles(arr.data, arr.n, arr.sizes);
     printf("ret:%d\n", ret);
     return 0;
 }

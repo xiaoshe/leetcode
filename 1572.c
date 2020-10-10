@@ -16,23 +16,11 @@ int diagonalSum(int** mat, int matSize, int* matColSize){
 
 
 int main(int argc, char *argv[]) {
-    /*
-    int a[3][32] = {
-        {1,2,3},
-        {4,5,6},
-        {7,8,9}
-    };
-    */
-    int a[4][32] = {
-        {1,1,1,1},
-        {1,1,1,1},
-        {1,1,1,1},
-        {1,1,1,1}
-    };
-    int sz[32];
+    char *s = " [1,1,1,1], [1,1,1,1], [1,1,1,1], [1,1,1,1]";
+    array2d arr = init_array2d(s);
+    print_array2d(arr);
 
-    int **b = array(a, 4, 4);
-    int ret = diagonalSum(b, 4, sz);
+    int ret = diagonalSum(arr.data, arr.n, arr.sizes);
     printf("ret:%d\n", ret);
     return 0;
 }

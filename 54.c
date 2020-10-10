@@ -56,41 +56,23 @@ int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSi
 }
 
 int main() {
-	int a[][32] = {
-        {1,2,3},
-        {4,5,6},
-        {7,8,9}
-	};
-    int m = 3;
-    int n = 3;
-    int size[] = {3,3,3};
-
     /*
-	int a[][32] = {
-        {1,2,3,4},
-        {5,6,7,8},
-        {9,10,11,12}
-	};
     int m = 3;
     int n = 4;
     int size[32] = {};
     size[0] = n;
-	int a[][32] = {
-        {1,2,3,4,5},
-        {6,7,8,9,10},
-        {11,12,13,14,15},
-        {16,17,18,19,20},
-        {21,22,23,24,25}
-	};
     int m = 5, n = 5;
     int size[32] = {};
     size[0] = n;
     */
 
-
-    int **b = array(a, m, n);
+    char *s = "[1,2,3], [4,5,6], [7,8,9]";
+    s = "[1,2,3,4],[5,6,7,8],[9,10,11,12]";
+	s = "[1,2,3,4,5], [6,7,8,9,10], [11,12,13,14,15], [16,17,18,19,20], [21,22,23,24,25]";
+    array2d arr = init_array2d(s);
+    print_array2d(arr);
     int sz = 0;
-    int *ret = spiralOrder(b, m, size, &sz);
+    int *ret = spiralOrder(arr.data, arr.n, arr.sizes, &sz);
     print_array(ret, sz);
 
     return 0;
