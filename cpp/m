@@ -1,4 +1,4 @@
 
 f=`ls *.cc -t | head -n 1`
 echo $f
-g++ -g -o a $f
+g++ -g -o a $f 

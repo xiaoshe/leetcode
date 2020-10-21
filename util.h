@@ -161,7 +161,7 @@ struct ListNode {
 };
 
 // 创建单链表节点
-struct ListNode *make(int v) {
+struct ListNode *make_list_node(int v) {
     struct ListNode *p = (struct ListNode *)malloc(sizeof(struct ListNode));
     p->val = v;
     p->next = NULL;
@@ -174,7 +174,7 @@ struct ListNode *init_list(char *s) {
     struct ListNode *ret = NULL;
     for (int i = sz - 1; i >= 0; i--) {
         int v = atoi(t[i]);
-        struct ListNode *t = make(v);
+        struct ListNode *t = make_list_node(v);
         t->next = ret;
         ret = t;
     }
@@ -209,46 +209,16 @@ struct TreeNode {
 	int val;
 	struct TreeNode *left;
 	struct TreeNode *right;
+	struct TreeNode *next;
 };
 struct TreeNode *make_tree_node(int v) {
     struct TreeNode *p = (struct TreeNode *)malloc(sizeof(struct TreeNode));
     p->val = v;
     p->left = NULL;
     p->right = NULL;
+    p->next = NULL;
     return p;
 }
-
-/*
-// 1,2,3,null,4,5
-struct TreeNode *init_tree(char *s) {
-    struct TreeNode *ret[SIZE] = {NULL};
-    int sz = 0;
-    while (*s != 0) {
-        if (*s >= '0' && *s <= '9') {
-            int val = 0;
-            while (*s >= '0' && *s <= '9') {
-                val = val * 10 + *s - '0';
-                s++;
-            }
-            struct TreeNode *t = make_tree_node(val);
-            ret[sz++] = t;
-        } else if (*s == 'n') {
-            // null
-            s += 4;
-            sz++;
-        }
-        if (*s == ',') s++;
-    }
-    for (int i = 0; i < sz; i++) {
-        struct TreeNode *t = ret[i];
-        int left = i * 2 + 1;
-        if (left < sz) t->left = ret[left];
-        int right = i * 2 + 2;
-        if (right < sz) t->right = ret[right];
-    }
-    return ret[0];
-}
-*/
 
 // 1,2,3,null,4,5
 // 1,null,2,2

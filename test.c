@@ -43,5 +43,6 @@ int main(int argc, char *argv[]) {
     */
     struct TreeNode *root = init_tree("1,null,2,3,null,2,3");
     print_tree(root);
+
     return 0;
 }
